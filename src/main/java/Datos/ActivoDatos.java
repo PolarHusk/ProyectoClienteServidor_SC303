@@ -13,7 +13,7 @@ import Modelo.*;
  * @author Dylan
  */
 public class ActivoDatos {
-    
+
     private final Conexion conexion;
 
     public ActivoDatos() {
@@ -47,7 +47,7 @@ public class ActivoDatos {
     }
 
     public boolean actualizar(Activo a) {
-        
+
         if (a.getId() <= 0) {
             return false;
         }
@@ -79,6 +79,24 @@ public class ActivoDatos {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
                     "Error al actualizar activo: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean actualizarEstado(Activo a) {
+        if (a.getId() <= 0) {
+            return false;
+        }
+
+        String sql = """
+                     UPDATE activos SET estadoActivo=? WHERE idActivo=?   
+                     """;
+        try (Connection con = conexion.Conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, a.getEstadoActivo().name());
+            ps.setInt(2, a.getId());
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar activo: " + e.getMessage());
         }
         return false;
     }
@@ -116,25 +134,24 @@ public class ActivoDatos {
         }
         return null;
     }
-    
-    public Activo buscarPorNombre(String activoNombre){
+
+    public Activo buscarPorNombre(String activoNombre) {
         String sql = "SELECT * from activos where nombreHost=?";
-        
-        try (Connection con = conexion.Conectar(); PreparedStatement ps  = con.prepareStatement(sql)){
-            
+
+        try (Connection con = conexion.Conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+
             ps.setString(1, activoNombre);
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next()) {
                 return map(rs);
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-    
 
     private Activo map(ResultSet rs) throws SQLException {
         return new Activo(
@@ -156,4 +173,3 @@ public class ActivoDatos {
         return ps.executeQuery();
     }
 }
-

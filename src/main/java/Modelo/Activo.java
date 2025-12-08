@@ -39,6 +39,13 @@ public class Activo {
         this.estadoActivo = estado;
     }
 
+    public Activo(int id, EstadoActivo estadoActivo) {
+        this.id = id;
+        this.estadoActivo = estadoActivo;
+    }
+    
+    
+
     public EstadoActivo getEstadoActivo() {
         return estadoActivo;
     }
