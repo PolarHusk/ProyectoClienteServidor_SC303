@@ -184,10 +184,12 @@ public class FormPrincipal extends javax.swing.JFrame {
                 VistaTecnico vistaTecnico = new VistaTecnico(logueado);
                 new ControladorTecnico(vistaTecnico);
                 vistaTecnico.setVisible(true);
+                break;
             case ENDUSER:
                 VistaEndUser vistaEndUser = new VistaEndUser(logueado);
                 new ControladorEndUser(vistaEndUser);
                 vistaEndUser.setVisible(true);
+                break;
         }
 
         this.dispose();
