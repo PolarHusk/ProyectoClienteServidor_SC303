@@ -36,7 +36,7 @@ public class Incidente {
         this.fechaCierre = fechaCierre;
     }
 
-    public Incidente(int id,String titulo, String descripcion, Estado estadoIncidente, Prioridad prioridad, Usuario reportadoPor, Usuario asignadoA, Activo activo, String fechaCreacion, String fechaCierre) {
+    public Incidente(int id, String titulo, String descripcion, Estado estadoIncidente, Prioridad prioridad, Usuario reportadoPor, Usuario asignadoA, Activo activo, String fechaCreacion, String fechaCierre) {
         this.idIncidente = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -47,6 +47,25 @@ public class Incidente {
         this.activo = activo;
         this.fechaCreacion = fechaCreacion;
         this.fechaCierre = fechaCierre;
+    }
+
+    public Incidente(int id, Estado estadoIncidente, Prioridad prioridadIncidente, String fechaCierre) {
+
+        this.idIncidente = id;
+        this.estadoIncidente = estadoIncidente;
+        this.prioridad = prioridadIncidente;
+        this.fechaCierre = fechaCierre;
+
+    }
+
+    public Incidente(int id, Estado estadoIncidente, Prioridad prioridadIncidente, String fechaCierre, Usuario asignadoA) {
+
+        this.idIncidente = id;
+        this.estadoIncidente = estadoIncidente;
+        this.prioridad = prioridadIncidente;
+        this.asignadoA = asignadoA;
+        this.fechaCierre = fechaCierre;
+
     }
 
     public int getIdIncidente() {

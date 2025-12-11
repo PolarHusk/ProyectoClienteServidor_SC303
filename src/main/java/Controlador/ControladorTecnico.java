@@ -9,9 +9,13 @@ import Datos.Conexion;
 import Datos.IncidenteDatos;
 import Datos.UsuarioDatos;
 import Modelo.Activo;
+import Modelo.Estado;
 import Modelo.EstadoActivo;
+import Modelo.Incidente;
+import Modelo.Prioridad;
 import Modelo.Tecnico;
 import Modelo.Usuario;
+import Vista.VistaChat;
 import Vista.VistaTecnico;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +23,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,7 +52,7 @@ public class ControladorTecnico {
 
         mostrarDatosUsuarios();
         mostrarDatosActivos();
-//        // mostrarDatosIncidentes();
+        mostrarDatosIncidentes();
 
     }
 
@@ -88,14 +97,14 @@ public class ControladorTecnico {
             }
 
         });
-        
-        this.vista.getBtnModificarActivoTecnico().addActionListener(new ActionListener(){
+
+        this.vista.getBtnModificarActivoTecnico().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 actualizarActivo();
                 mostrarDatosActivos();
             }
-            
+
         });
 
         this.vista.getTblActivos().addMouseListener(new MouseAdapter() {
@@ -110,6 +119,68 @@ public class ControladorTecnico {
                 vista.getLblUbicacionActivoTecnicoVariable().setText(vista.getTblActivos().getValueAt(rec, 6).toString());
                 vista.getLblDepartamentoActivoTecnicoVariable().setText(vista.getTblActivos().getValueAt(rec, 7).toString());
                 vista.getCbEstadoActivoTecnico().setSelectedItem(vista.getTblActivos().getValueAt(rec, 5));
+
+            }
+
+        });
+
+        this.vista.getBtnActualizarIncidente().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actualizarIncidente();
+                mostrarDatosIncidentes();
+            }
+
+        });
+
+        this.vista.getBtnBuscarIncidente().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscarIncidente();
+                mostrarDatosIncidentes();
+            }
+
+        });
+
+        this.vista.getTblIncidentes().addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                int rec = vista.getTblIncidentes().getSelectedRow();
+                int idIncidenteSeleccionado = Integer.parseInt(vista.getTblIncidentes().getValueAt(rec, 0).toString());
+                vista.setIdIncidenteSeleccionado(idIncidenteSeleccionado);
+                vista.getLblTituloIncidenteVariable().setText(vista.getTblIncidentes().getValueAt(rec, 1).toString());
+                vista.getLblDescripcionIncidenteVariable().setText(vista.getTblIncidentes().getValueAt(rec, 2).toString());
+                vista.getCbEstadoIncidenteTecnico().setSelectedItem(vista.getTblIncidentes().getValueAt(rec, 3).toString());
+                vista.getCbPrioridadIncidenteTecnico().setSelectedItem(vista.getTblIncidentes().getValueAt(rec, 4).toString());
+                vista.getLblReportadoPorVariable().setText(vista.getTblIncidentes().getValueAt(rec, 5).toString());
+                vista.getLblActivoImpactadoVariable().setText(vista.getTblIncidentes().getValueAt(rec, 7).toString());
+                vista.getLblFechaAperturaVariable().setText(vista.getTblIncidentes().getValueAt(rec, 8).toString());
+
+                if (vista.getTblIncidentes().getValueAt(rec, 6) == null) {
+                    vista.getTxtAsignadoA().setText("Sin tecnico asignado");
+                } else {
+                    vista.getTxtAsignadoA().setText(vista.getTblIncidentes().getValueAt(rec, 6).toString());
+                }
+
+                if (vista.getTblIncidentes().getValueAt(rec, 9) == null) {
+                    vista.getLblFechaCierreVariable().setText("Incidente Abierto");
+                } else {
+                    vista.getLblFechaCierreVariable().setText(vista.getTblIncidentes().getValueAt(rec, 9).toString());
+                }
+            }
+
+        });
+
+        this.vista.getBtnChatEnVivo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int incidenteSeleccionado = vista.getIdIncidenteSeleccionado();
+                if (incidenteSeleccionado > 0) {
+                    VistaChat chat = new VistaChat(incidenteSeleccionado);
+                    new ControladorChat(chat, vista.getLogueado());
+                    chat.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(vista, "Seleccione un incidente primero");
+                }
 
             }
 
@@ -246,21 +317,21 @@ public class ControladorTecnico {
         JOptionPane.showMessageDialog(vista, "Activo encontrado");
 
     }
-    
-    private void actualizarActivo(){
-        
+
+    private void actualizarActivo() {
+
         int id = vista.getIdActivoSeleccionado();
-        
-        EstadoActivo estadoActivo =  EstadoActivo.valueOf(vista.getCbEstadoActivoTecnico().getSelectedItem().toString().toUpperCase());
-      
+
+        EstadoActivo estadoActivo = EstadoActivo.valueOf(vista.getCbEstadoActivoTecnico().getSelectedItem().toString().toUpperCase());
+
         Activo actualizado = new Activo(id, estadoActivo);
-        
+
         if (activoConexion.actualizarEstado(actualizado)) {
             JOptionPane.showMessageDialog(vista, "Activo actualizado correctamente");
-        } else{
+        } else {
             JOptionPane.showMessageDialog(vista, "Activo no encontrado");
         }
-        
+
     }
 
     private void mostrarDatosActivos() {
@@ -298,6 +369,124 @@ public class ControladorTecnico {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,
                     "Error cargando activos: " + ex.getMessage());
+        }
+    }
+
+    private void actualizarIncidente() {
+
+        int id = vista.getIdIncidenteSeleccionado();
+
+        Estado estadoIncidente = Estado.valueOf(this.vista.getCbEstadoIncidenteTecnico().getSelectedItem().toString().toUpperCase());
+
+        Prioridad prioridadIncidente = Prioridad.valueOf(this.vista.getCbPrioridadIncidenteTecnico().getSelectedItem().toString().toUpperCase());
+
+        String asignadoSeleccionado = this.vista.getTxtAsignadoA().getText().trim();
+
+        Usuario nuevoAsignado = usuarioConexion.buscarPorUsuario(asignadoSeleccionado);
+
+        if (nuevoAsignado == null) {
+            JOptionPane.showMessageDialog(vista, "El tecnico no esta asignado aun", "Incidente sin tecnico asignado", JOptionPane.WARNING_MESSAGE);
+        }
+
+        String fechaCierre;
+
+        if (estadoIncidente == Estado.RESUELTO || estadoIncidente == Estado.CANCELADO) {
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime fecha = LocalDateTime.now();
+            fechaCierre = fecha.format(formato);
+        } else {
+            fechaCierre = null;
+        }
+
+        Incidente actualizado = new Incidente(id, estadoIncidente, prioridadIncidente, fechaCierre,nuevoAsignado);
+
+        if (incidenteConexion.actualizarEstadoYPrioridad(actualizado)) {
+            JOptionPane.showMessageDialog(vista, "Incidente actualizado correctamente");
+        } else {
+            JOptionPane.showMessageDialog(vista, "Incidente no encontrado en la base de datos");
+        }
+
+    }
+
+    private void buscarIncidente() {
+
+        this.vista.getTblIncidentes().clearSelection();
+
+        int idIncidenteSeleccionado = Integer.parseInt(this.vista.getTxtReportadoPor().getText());
+
+        Incidente encontrado = incidenteConexion.buscarPorId(idIncidenteSeleccionado);
+
+        if (encontrado == null) {
+            JOptionPane.showMessageDialog(vista, "Incidente no encontrado en la base de datos");
+        } else {
+            JOptionPane.showMessageDialog(vista, "Incidente encontrado");
+        }
+
+        vista.setIdIncidenteSeleccionado(idIncidenteSeleccionado);
+
+        vista.getLblTituloIncidenteVariable().setText(encontrado.getTitulo());
+        vista.getLblDescripcionIncidenteVariable().setText(encontrado.getDescripcion());
+        vista.getCbEstadoIncidenteTecnico().setSelectedItem(encontrado.getEstadoIncidente().toString());
+        vista.getCbPrioridadIncidenteTecnico().setSelectedItem(encontrado.getPrioridad().toString());
+        vista.getLblReportadoPorVariable().setText(encontrado.getReportadoPor().getUsuario());
+
+        if (encontrado.getAsignadoA() == null) {
+            vista.getTxtAsignadoA().setText("Sin tecnico asignado");
+        } else {
+            vista.getTxtAsignadoA().setText(encontrado.getAsignadoA().getUsuario());
+
+        }
+
+        vista.getLblActivoImpactadoVariable().setText(encontrado.getActivo().getNombreHost());
+        vista.getLblFechaAperturaVariable().setText(encontrado.getFechaCreacion());
+
+        if (encontrado.getFechaCierre() == null) {
+            vista.getLblFechaCierreVariable().setText("Incidente Abierto");
+        } else {
+            vista.getLblFechaCierreVariable().setText(encontrado.getFechaCierre());
+        }
+
+    }
+
+    private void mostrarDatosIncidentes() {
+
+        try {
+            ResultSet rsIncidentes = incidenteConexion.obtenerTodosIncidentes();
+
+            DefaultTableModel tblIncidentes = new DefaultTableModel();
+            tblIncidentes.addColumn("ID");
+            tblIncidentes.addColumn("Titulo");
+            tblIncidentes.addColumn("Descripcion");
+            tblIncidentes.addColumn("Estado Incidente");
+            tblIncidentes.addColumn("Prioridad");
+            tblIncidentes.addColumn("Reportado Por");
+            tblIncidentes.addColumn("Asignado A");
+            tblIncidentes.addColumn("Activo Impactado: ");
+            tblIncidentes.addColumn("Fecha Creacion");
+            tblIncidentes.addColumn("Fecha Cierre");
+
+            while (rsIncidentes.next()) {
+                tblIncidentes.addRow(new Object[]{
+                    rsIncidentes.getInt("idIncidente"),
+                    rsIncidentes.getString("titulo"),
+                    rsIncidentes.getString("descripcion"),
+                    rsIncidentes.getString("estadoIncidente"),
+                    rsIncidentes.getString("prioridad"),
+                    rsIncidentes.getString("reportadoNombre"),
+                    rsIncidentes.getString("asignadoNombre"),
+                    rsIncidentes.getString("activoNombre"),
+                    rsIncidentes.getString("fechaCreacion"),
+                    rsIncidentes.getString("fechaCierre")
+                });
+            }
+
+            this.vista.getTblIncidentes().setModel(tblIncidentes);
+
+            rsIncidentes.getStatement().getConnection().close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "Error cargando usuarios: " + ex.getMessage());
         }
     }
 

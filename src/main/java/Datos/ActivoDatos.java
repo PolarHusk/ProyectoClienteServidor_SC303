@@ -32,16 +32,15 @@ public class ActivoDatos {
             ps.setString(1, a.getIp());
             ps.setString(2, a.getNombreHost());
             ps.setString(3, a.getSistemaOperativo());
-            ps.setString(4, a.getActivo().name());      // ENUM → STRING
-            ps.setString(5, a.getEstadoActivo().name());    // NUEVO ENUM
+            ps.setString(4, a.getActivo().name());
+            ps.setString(5, a.getEstadoActivo().name());
             ps.setString(6, a.getUbicacion());
             ps.setString(7, a.getDepartamento());
 
             return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Error al insertar activo: " + e.getMessage());
+            System.out.println("El activo con nombre: " + a.getNombreHost() + " ya existe en la base de datos");
         }
         return false;
     }
@@ -110,9 +109,9 @@ public class ActivoDatos {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Error al eliminar activo: " + e.getMessage());
+            System.out.println("Error al eliminar activo: " + e.getMessage());
         }
+
         return false;
     }
 

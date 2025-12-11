@@ -32,6 +32,134 @@ public class VistaTecnico extends javax.swing.JFrame {
         this.logueado = logueado;
     }
 
+    public JButton getBtnChatEnVivo() {
+        return btnChatEnVivo;
+    }
+    
+
+    public void setBtnChatEnVivo(JButton btnChatEnVivo) {
+        this.btnChatEnVivo = btnChatEnVivo;
+    }
+    
+
+    public JButton getBtnActualizarIncidente() {
+        return btnActualizarIncidente;
+    }
+
+    public void setBtnActualizarIncidente(JButton btnActualizarIncidente) {
+        this.btnActualizarIncidente = btnActualizarIncidente;
+    }
+
+    public JButton getBtnBuscarIncidente() {
+        return btnBuscarIncidente;
+    }
+
+    public void setBtnBuscarIncidente(JButton btnBuscarIncidente) {
+        this.btnBuscarIncidente = btnBuscarIncidente;
+    }
+
+    public JComboBox<String> getCbEstadoIncidenteTecnico() {
+        return cbEstadoIncidenteTecnico;
+    }
+
+    public void setCbEstadoIncidenteTecnico(JComboBox<String> cbEstadoIncidenteTecnico) {
+        this.cbEstadoIncidenteTecnico = cbEstadoIncidenteTecnico;
+    }
+
+    public JComboBox<String> getCbPrioridadIncidenteTecnico() {
+        return cbPrioridadIncidenteTecnico;
+    }
+
+    public void setCbPrioridadIncidenteTecnico(JComboBox<String> cbPrioridadIncidenteTecnico) {
+        this.cbPrioridadIncidenteTecnico = cbPrioridadIncidenteTecnico;
+    }
+
+    public JLabel getLblActivoImpactadoVariable() {
+        return lblActivoImpactadoVariable;
+    }
+
+    public void setLblActivoImpactadoVariable(JLabel lblActivoImpactadoVariable) {
+        this.lblActivoImpactadoVariable = lblActivoImpactadoVariable;
+    }
+
+    public JTextField getTxtAsignadoA() {
+        return txtAsignadoA;
+    }
+
+    public void setTxtAsignadoA(JTextField txtAsignadoA) {
+        this.txtAsignadoA = txtAsignadoA;
+    }
+
+    public JTextField getTxtBusquedaIncidenteId() {
+        return txtBusquedaIncidenteId;
+    }
+
+    public void setTxtBusquedaIncidenteId(JTextField txtBusquedaIncidenteId) {
+        this.txtBusquedaIncidenteId = txtBusquedaIncidenteId;
+    }
+
+
+
+
+
+    public JLabel getLblDescripcionIncidenteVariable() {
+        return lblDescripcionIncidenteVariable;
+    }
+
+    public void setLblDescripcionIncidenteVariable(JLabel lblDescripcionIncidenteVariable) {
+        this.lblDescripcionIncidenteVariable = lblDescripcionIncidenteVariable;
+    }
+
+    public JLabel getLblFechaAperturaVariable() {
+        return lblFechaAperturaVariable;
+    }
+
+    public void setLblFechaAperturaVariable(JLabel lblFechaAperturaVariable) {
+        this.lblFechaAperturaVariable = lblFechaAperturaVariable;
+    }
+
+    public JLabel getLblFechaCierreVariable() {
+        return lblFechaCierreVariable;
+    }
+
+    public void setLblFechaCierreVariable(JLabel lblFechaCierreVariable) {
+        this.lblFechaCierreVariable = lblFechaCierreVariable;
+    }
+
+    public JLabel getLblReportadoPorVariable() {
+        return lblReportadoPorVariable;
+    }
+
+    public void setLblReportadoPorVariable(JLabel lblReportadoPorVariable) {
+        this.lblReportadoPorVariable = lblReportadoPorVariable;
+    }
+
+    public JLabel getLblTituloIncidenteVariable() {
+        return lblTituloIncidenteVariable;
+    }
+
+    public void setLblTituloIncidenteVariable(JLabel lblTituloIncidenteVariable) {
+        this.lblTituloIncidenteVariable = lblTituloIncidenteVariable;
+    }
+
+    public JTable getTblIncidentes() {
+        return tblIncidentes;
+    }
+
+    public void setTblIncidentes(JTable tblIncidentes) {
+        this.tblIncidentes = tblIncidentes;
+    }
+
+    public JTextField getTxtReportadoPor() {
+        return txtBusquedaIncidenteId;
+    }
+
+    public void setTxtReportadoPor(JTextField txtReportadoPor) {
+        this.txtBusquedaIncidenteId = txtReportadoPor;
+    }
+    
+    
+
     public Usuario getLogueado() {
         return logueado;
     }
@@ -422,7 +550,6 @@ public class VistaTecnico extends javax.swing.JFrame {
         btnBuscarTecnico = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuarios = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblActivos = new javax.swing.JTable();
@@ -444,8 +571,36 @@ public class VistaTecnico extends javax.swing.JFrame {
         lblBusquedaNombreActivoTecnico = new javax.swing.JLabel();
         txtBusquedaNombreActivoTecnico = new javax.swing.JTextField();
         btnBuscarActivoTecnico = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        lblTituloIncidente = new javax.swing.JLabel();
+        lblFechaAperturaTitulo = new javax.swing.JLabel();
+        lblFechaAperturaVariable = new javax.swing.JLabel();
+        lblFechaCierreTitulo = new javax.swing.JLabel();
+        lblFechaCierreVariable = new javax.swing.JLabel();
+        lblTituloIncidenteVariable = new javax.swing.JLabel();
+        lblReportadoPorTitulo = new javax.swing.JLabel();
+        lblReportadoPorVariable = new javax.swing.JLabel();
+        lblAsignadoATitulo = new javax.swing.JLabel();
+        lblActivoImpactadoVariable = new javax.swing.JLabel();
+        lblActivoImpactadoTitulo = new javax.swing.JLabel();
+        lblBuscarIncidentePorID = new javax.swing.JLabel();
+        lblDescripcionIncidenteVariable = new javax.swing.JLabel();
+        lblEstadoIncidenteTitulo = new javax.swing.JLabel();
+        cbEstadoIncidenteTecnico = new javax.swing.JComboBox<>();
+        cbPrioridadIncidenteTecnico = new javax.swing.JComboBox<>();
+        lblPrioridadIncidenteTitulo = new javax.swing.JLabel();
+        btnActualizarIncidente = new javax.swing.JButton();
+        lblDescripcionIncidenteTitulo1 = new javax.swing.JLabel();
+        txtBusquedaIncidenteId = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblIncidentes = new javax.swing.JTable();
+        btnBuscarIncidente = new javax.swing.JButton();
+        btnChatEnVivo = new javax.swing.JButton();
+        txtAsignadoA = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tecnico");
+        setBounds(new java.awt.Rectangle(0, 0, 700, 700));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -579,14 +734,14 @@ public class VistaTecnico extends javax.swing.JFrame {
                         .addComponent(txtBusquedaTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblTecnicoApellido1)
                     .addComponent(lblTecnicoNombre))
-                .addGap(113, 141, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE))
+                .addGap(113, 146, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 910, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNombreUsuarioTecnico)
                     .addComponent(lblTecnicoUsuarioVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
@@ -628,26 +783,11 @@ public class VistaTecnico extends javax.swing.JFrame {
                     .addComponent(txtBusquedaTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(btnBuscarTecnico)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
 
         jTabbedPane1.addTab("Usuario", jPanel1);
-
-        jPanel3.setBackground(new java.awt.Color(153, 153, 255));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1493, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Incidentes", jPanel3);
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -746,7 +886,7 @@ public class VistaTecnico extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(btnModificarActivoTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lblTipoDeActivoTecnicoVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnBuscarActivoTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -781,7 +921,7 @@ public class VistaTecnico extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEstadoActivoTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbEstadoActivoTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTipoDeActivoTecnicoTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTipoDeActivoTecnicoVariable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -798,15 +938,244 @@ public class VistaTecnico extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Activos", jPanel2);
 
+        jPanel3.setBackground(new java.awt.Color(153, 153, 255));
+
+        lblTituloIncidente.setBackground(new java.awt.Color(255, 255, 255));
+        lblTituloIncidente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTituloIncidente.setForeground(new java.awt.Color(0, 0, 0));
+        lblTituloIncidente.setText("Titulo del Incidente : ");
+
+        lblFechaAperturaTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblFechaAperturaTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblFechaAperturaTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        lblFechaAperturaTitulo.setText("Fecha Apertura: ");
+
+        lblFechaAperturaVariable.setBackground(new java.awt.Color(255, 255, 255));
+        lblFechaAperturaVariable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblFechaAperturaVariable.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblFechaCierreTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblFechaCierreTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblFechaCierreTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        lblFechaCierreTitulo.setText("Fecha Cierre: ");
+
+        lblFechaCierreVariable.setBackground(new java.awt.Color(255, 255, 255));
+        lblFechaCierreVariable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblFechaCierreVariable.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblTituloIncidenteVariable.setBackground(new java.awt.Color(255, 255, 255));
+        lblTituloIncidenteVariable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTituloIncidenteVariable.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblReportadoPorTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblReportadoPorTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblReportadoPorTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        lblReportadoPorTitulo.setText("Reportado por:");
+
+        lblReportadoPorVariable.setBackground(new java.awt.Color(255, 255, 255));
+        lblReportadoPorVariable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblReportadoPorVariable.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblAsignadoATitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblAsignadoATitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblAsignadoATitulo.setForeground(new java.awt.Color(0, 0, 0));
+        lblAsignadoATitulo.setText("Asignado a: ");
+
+        lblActivoImpactadoVariable.setBackground(new java.awt.Color(255, 255, 255));
+        lblActivoImpactadoVariable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblActivoImpactadoVariable.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblActivoImpactadoTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblActivoImpactadoTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblActivoImpactadoTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        lblActivoImpactadoTitulo.setText("Activo impactado: ");
+
+        lblBuscarIncidentePorID.setBackground(new java.awt.Color(255, 255, 255));
+        lblBuscarIncidentePorID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblBuscarIncidentePorID.setForeground(new java.awt.Color(0, 0, 0));
+        lblBuscarIncidentePorID.setText("Buscar Incidente por ID: ");
+
+        lblDescripcionIncidenteVariable.setBackground(new java.awt.Color(255, 255, 255));
+        lblDescripcionIncidenteVariable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDescripcionIncidenteVariable.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblEstadoIncidenteTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblEstadoIncidenteTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEstadoIncidenteTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        lblEstadoIncidenteTitulo.setText("Estado del incidente: ");
+
+        cbEstadoIncidenteTecnico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABIERTO", "EN_PROCESO", "RESUELTO", "CANCELADO" }));
+
+        cbPrioridadIncidenteTecnico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BAJA", "MEDIA", "ALTA", "CRITICA" }));
+
+        lblPrioridadIncidenteTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblPrioridadIncidenteTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPrioridadIncidenteTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        lblPrioridadIncidenteTitulo.setText("Prioridad:");
+
+        btnActualizarIncidente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnActualizarIncidente.setText("Actualizar");
+
+        lblDescripcionIncidenteTitulo1.setBackground(new java.awt.Color(255, 255, 255));
+        lblDescripcionIncidenteTitulo1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDescripcionIncidenteTitulo1.setForeground(new java.awt.Color(0, 0, 0));
+        lblDescripcionIncidenteTitulo1.setText("Descripcion del incidente:");
+
+        tblIncidentes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tblIncidentes);
+
+        btnBuscarIncidente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscarIncidente.setText("Buscar");
+
+        btnChatEnVivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnChatEnVivo.setText("Iniciar Chat");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblReportadoPorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAsignadoATitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtAsignadoA, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                            .addComponent(lblReportadoPorVariable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(81, 81, 81)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnChatEnVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(lblEstadoIncidenteTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(88, 88, 88)
+                                        .addComponent(cbEstadoIncidenteTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(lblFechaCierreTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblFechaCierreVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(lblPrioridadIncidenteTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(91, 91, 91)
+                                        .addComponent(cbPrioridadIncidenteTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(2, 2, 2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addGap(230, 230, 230)
+                                .addComponent(btnActualizarIncidente, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(143, 143, 143))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblTituloIncidente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTituloIncidenteVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblFechaAperturaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblFechaAperturaVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblActivoImpactadoTitulo)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblDescripcionIncidenteTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblDescripcionIncidenteVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnBuscarIncidente, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(lblBuscarIncidentePorID, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtBusquedaIncidenteId, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addComponent(lblActivoImpactadoVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(446, 446, 446)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblTituloIncidente, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addComponent(lblTituloIncidenteVariable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblFechaCierreVariable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblFechaAperturaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFechaCierreTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFechaAperturaVariable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEstadoIncidenteTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbEstadoIncidenteTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPrioridadIncidenteTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbPrioridadIncidenteTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addComponent(btnActualizarIncidente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblReportadoPorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGap(33, 33, 33))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblReportadoPorVariable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAsignadoATitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAsignadoA, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(75, 75, 75)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblActivoImpactadoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblActivoImpactadoVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(129, 129, 129)))
+                .addComponent(btnChatEnVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblDescripcionIncidenteTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDescripcionIncidenteVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(88, 88, 88)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBuscarIncidentePorID, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusquedaIncidenteId, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(75, 75, 75)
+                .addComponent(btnBuscarIncidente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(306, 306, 306))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE)
+                .addGap(0, 77, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Incidentes", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1493, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1089, Short.MAX_VALUE)
         );
 
         pack();
@@ -832,33 +1201,53 @@ public class VistaTecnico extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizarIncidente;
     private javax.swing.JButton btnActualizarTecnico;
     private javax.swing.JButton btnBuscarActivoTecnico;
+    private javax.swing.JButton btnBuscarIncidente;
     private javax.swing.JButton btnBuscarTecnico;
+    private javax.swing.JButton btnChatEnVivo;
     private javax.swing.JButton btnModificarActivoTecnico;
     private javax.swing.JComboBox<String> cbEstadoActivoTecnico;
+    private javax.swing.JComboBox<String> cbEstadoIncidenteTecnico;
+    private javax.swing.JComboBox<String> cbPrioridadIncidenteTecnico;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblActivoImpactadoTitulo;
+    private javax.swing.JLabel lblActivoImpactadoVariable;
     private javax.swing.JLabel lblActivoNombreVariable;
+    private javax.swing.JLabel lblAsignadoATitulo;
+    private javax.swing.JLabel lblBuscarIncidentePorID;
     private javax.swing.JLabel lblBusquedaNombreActivoTecnico;
     private javax.swing.JLabel lblBusquedaNombreTecnico;
     private javax.swing.JLabel lblDepartamentoActivoTecnicoVariable;
     private javax.swing.JLabel lblDepartamentoTecnico;
     private javax.swing.JLabel lblDepartamentoTecnicoTitulo;
     private javax.swing.JLabel lblDepartamentoTecnicoVariable;
+    private javax.swing.JLabel lblDescripcionIncidenteTitulo1;
+    private javax.swing.JLabel lblDescripcionIncidenteVariable;
     private javax.swing.JLabel lblEstadoActivoTecnico;
+    private javax.swing.JLabel lblEstadoIncidenteTitulo;
+    private javax.swing.JLabel lblFechaAperturaTitulo;
+    private javax.swing.JLabel lblFechaAperturaVariable;
+    private javax.swing.JLabel lblFechaCierreTitulo;
+    private javax.swing.JLabel lblFechaCierreVariable;
     private javax.swing.JLabel lblIPActivoTecnico;
     private javax.swing.JLabel lblIPActivoTecnicoVariable;
     private javax.swing.JLabel lblNombreActivoTecnico;
     private javax.swing.JLabel lblNombreUsuarioTecnico;
     private javax.swing.JLabel lblOSActivoTecnico;
     private javax.swing.JLabel lblOSActivoTecnicoVariable;
+    private javax.swing.JLabel lblPrioridadIncidenteTitulo;
     private javax.swing.JLabel lblPuestoTecnicoTitulo;
     private javax.swing.JLabel lblPuestoTecnicoVariable;
+    private javax.swing.JLabel lblReportadoPorTitulo;
+    private javax.swing.JLabel lblReportadoPorVariable;
     private javax.swing.JLabel lblTecnicoApellido1;
     private javax.swing.JLabel lblTecnicoApellido2;
     private javax.swing.JLabel lblTecnicoContrasena;
@@ -867,10 +1256,15 @@ public class VistaTecnico extends javax.swing.JFrame {
     private javax.swing.JLabel lblTecnicoUsuarioVariable;
     private javax.swing.JLabel lblTipoDeActivoTecnicoTitulo;
     private javax.swing.JLabel lblTipoDeActivoTecnicoVariable;
+    private javax.swing.JLabel lblTituloIncidente;
+    private javax.swing.JLabel lblTituloIncidenteVariable;
     private javax.swing.JLabel lblUbicacionActivoTecnico;
     private javax.swing.JLabel lblUbicacionActivoTecnicoVariable;
     private javax.swing.JTable tblActivos;
+    private javax.swing.JTable tblIncidentes;
     private javax.swing.JTable tblUsuarios;
+    private javax.swing.JTextField txtAsignadoA;
+    private javax.swing.JTextField txtBusquedaIncidenteId;
     private javax.swing.JTextField txtBusquedaNombreActivoTecnico;
     private javax.swing.JTextField txtBusquedaTecnico;
     private javax.swing.JPasswordField txtContrasenaTecnicoUpdate;

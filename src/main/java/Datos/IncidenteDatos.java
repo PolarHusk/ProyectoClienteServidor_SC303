@@ -36,7 +36,11 @@ public class IncidenteDatos {
             ps.setString(3, i.getEstadoIncidente().name());
             ps.setString(4, i.getPrioridad().name());
             ps.setInt(5, i.getReportadoPor().getId());
-            ps.setInt(6, i.getAsignadoA() != null ? i.getAsignadoA().getId() : null);
+            if (i.getAsignadoA() != null) {
+                ps.setInt(6, i.getAsignadoA().getId());
+            } else {
+                ps.setNull(6, java.sql.Types.INTEGER);
+            }
             ps.setInt(7, i.getActivo().getId());
             ps.setString(8, i.getFechaCreacion());
             ps.setString(9, i.getFechaCierre());
@@ -51,7 +55,7 @@ public class IncidenteDatos {
     }
 
     public boolean actualizar(Incidente i) {
-        
+
         if (i.getIdIncidente() <= 0) {
             return false;
         }
@@ -77,7 +81,11 @@ public class IncidenteDatos {
             ps.setString(3, i.getEstadoIncidente().name());
             ps.setString(4, i.getPrioridad().name());
             ps.setInt(5, i.getReportadoPor().getId());
-            ps.setInt(6, i.getAsignadoA() != null ? i.getAsignadoA().getId() : 0);
+            if (i.getAsignadoA() != null) {
+                ps.setInt(6, i.getAsignadoA().getId());
+            } else {
+                ps.setNull(6, java.sql.Types.INTEGER);
+            }
             ps.setInt(7, i.getActivo().getId());
             ps.setString(8, i.getFechaCreacion());
             ps.setString(9, i.getFechaCierre());
@@ -90,6 +98,36 @@ public class IncidenteDatos {
                     "Error al actualizar incidente: " + e.getMessage());
         }
 
+        return false;
+    }
+
+    public boolean actualizarEstadoYPrioridad(Incidente i) {
+
+        if (i.getIdIncidente() <= 0) {
+            return false;
+        }
+
+        String sql = """
+                     UPDATE incidentes SET estadoIncidente=?,prioridad=?, fechaCierre=?, asignadoA=? WHERE idIncidente=?
+                     """;
+
+        try (Connection con = conexion.Conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, i.getEstadoIncidente().name());
+            ps.setString(2, i.getPrioridad().name());
+            ps.setString(3, i.getFechaCierre());
+            
+            if (i.getAsignadoA() != null) {
+                ps.setInt(4, i.getAsignadoA().getId());
+            } else {
+                ps.setNull(4, java.sql.Types.INTEGER);
+            }
+            
+            ps.setInt(5, i.getIdIncidente());
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar activo: " + e.getMessage());
+        }
         return false;
     }
 
@@ -166,6 +204,31 @@ public class IncidenteDatos {
                      LEFT JOIN activos a ON i.activo = a.idActivo""";
         Connection con = conexion.Conectar();
         PreparedStatement ps = con.prepareStatement(sql);
+        return ps.executeQuery();
+    }
+
+    public ResultSet obtenerIncidentesReportadosPor(int idUsuario) throws SQLException {
+        String sql = """
+                 SELECT i.idIncidente,
+                        i.titulo,
+                        i.descripcion,
+                        i.estadoIncidente,
+                        i.prioridad,
+                        u1.usuario AS reportadoNombre,
+                        u2.usuario AS asignadoNombre,
+                        a.nombreHost AS activoNombre,
+                        i.fechaCreacion,
+                        i.fechaCierre
+                 FROM incidentes i
+                 LEFT JOIN usuario u1 ON i.reportadoPor = u1.idUsuario
+                 LEFT JOIN usuario u2 ON i.asignadoA = u2.idUsuario
+                 LEFT JOIN activos a ON i.activo = a.idActivo
+                 WHERE i.reportadoPor = ?
+                 """;
+
+        Connection con = conexion.Conectar();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idUsuario);
         return ps.executeQuery();
     }
 
