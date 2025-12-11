@@ -10,6 +10,7 @@ import Vista.*;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -33,6 +34,11 @@ public class VistaAdmin extends javax.swing.JFrame {
     public int getIdActivoSeleccionado() {
         return idActivoSeleccionado;
     }
+
+    public JMenuItem getmCerrarSesion() {
+        return mCerrarSesion;
+    }
+    
 
     public Usuario getLogueado() {
         return logueado;
@@ -166,6 +172,9 @@ public class VistaAdmin extends javax.swing.JFrame {
         cbEstadoActivo = new javax.swing.JComboBox<>();
         lblTipoDeActivo = new javax.swing.JLabel();
         cbTipoDeActivo = new javax.swing.JComboBox<>();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        mCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administrador");
@@ -858,6 +867,15 @@ public class VistaAdmin extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Activos", jPanel2);
+
+        jMenu1.setText("Sesion");
+
+        mCerrarSesion.setText("Cerrar Sesion");
+        jMenu1.add(mCerrarSesion);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1641,6 +1659,8 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbPrioridadIncidente;
     private javax.swing.JComboBox<String> cbRolUsuario;
     private javax.swing.JComboBox<String> cbTipoDeActivo;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1682,6 +1702,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsuarioCorreo;
     private javax.swing.JLabel lblUsuarioDepartamento;
     private javax.swing.JLabel lblUsuarioNombre;
+    private javax.swing.JMenuItem mCerrarSesion;
     private javax.swing.JTable tblActivos;
     private javax.swing.JTable tblIncidentes;
     private javax.swing.JTable tblUsuarios;

@@ -14,6 +14,7 @@ import Modelo.Prioridad;
 import Modelo.Tecnico;
 import Modelo.Usuario;
 import Modelo.UsuarioFinal;
+import Principal.FormPrincipal;
 import Vista.VistaEndUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -95,13 +96,12 @@ public class ControladorEndUser {
                 vista.getCbPrioridadIncidente().setSelectedItem(vista.getTblMisIncidentes().getValueAt(rec, 4).toString());
                 vista.getTxtReportadoPor().setText(vista.getTblMisIncidentes().getValueAt(rec, 5).toString());
 
-
                 if (vista.getTblMisIncidentes().getValueAt(rec, 6) == null) {
                     vista.getTxtAsignadoA1().setText("Sin tecnico asignado");
-                } else{
+                } else {
                     vista.getTxtAsignadoA1().setText(vista.getTblMisIncidentes().getValueAt(rec, 6).toString());
                 }
-                
+
                 vista.getTxtActivoAfectado().setText(vista.getTblMisIncidentes().getValueAt(rec, 7).toString());
                 vista.getLblFechaAperturaVariable().setText(vista.getTblMisIncidentes().getValueAt(rec, 8).toString());
 
@@ -130,8 +130,8 @@ public class ControladorEndUser {
             }
 
         });
-        
-        this.vista.getBtnIniciarChat().addActionListener(new ActionListener(){
+
+        this.vista.getBtnIniciarChat().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int incidenteSeleccionado = vista.getIdIncidenteSeleccionado();
@@ -139,13 +139,20 @@ public class ControladorEndUser {
                     VistaChat chat = new VistaChat(incidenteSeleccionado);
                     new ControladorChat(chat, vista.getLogueado());
                     chat.setVisible(true);
-                } else{
+                } else {
                     JOptionPane.showMessageDialog(vista, "Seleccione un incidente primero");
                 }
-                
-            }     
+
+            }
         });
-        
+
+        this.vista.getmCerrarSesion().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cerrarSesion();
+            }
+
+        });
 
     }
 
@@ -396,6 +403,14 @@ public class ControladorEndUser {
                     "Error cargando usuarios: " + ex.getMessage());
         }
 
+    }
+
+    private void cerrarSesion() {
+        this.vista.dispose();
+
+        FormPrincipal login = new FormPrincipal();
+        InicioSesion controlador = new InicioSesion();
+        login.setVisible(true);
     }
 
 }
