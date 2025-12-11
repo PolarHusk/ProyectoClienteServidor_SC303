@@ -15,6 +15,7 @@ import Modelo.Incidente;
 import Modelo.Prioridad;
 import Modelo.Tecnico;
 import Modelo.Usuario;
+import Principal.FormPrincipal;
 import Vista.VistaChat;
 import Vista.VistaTecnico;
 import java.awt.event.ActionEvent;
@@ -148,7 +149,7 @@ public class ControladorTecnico {
                 int idIncidenteSeleccionado = Integer.parseInt(vista.getTblIncidentes().getValueAt(rec, 0).toString());
                 vista.setIdIncidenteSeleccionado(idIncidenteSeleccionado);
                 vista.getLblTituloIncidenteVariable().setText(vista.getTblIncidentes().getValueAt(rec, 1).toString());
-                vista.getLblDescripcionIncidenteVariable().setText(vista.getTblIncidentes().getValueAt(rec, 2).toString());
+                vista.getTxtDescripcionIncidente().setText(vista.getTblIncidentes().getValueAt(rec, 2).toString());
                 vista.getCbEstadoIncidenteTecnico().setSelectedItem(vista.getTblIncidentes().getValueAt(rec, 3).toString());
                 vista.getCbPrioridadIncidenteTecnico().setSelectedItem(vista.getTblIncidentes().getValueAt(rec, 4).toString());
                 vista.getLblReportadoPorVariable().setText(vista.getTblIncidentes().getValueAt(rec, 5).toString());
@@ -182,6 +183,14 @@ public class ControladorTecnico {
                     JOptionPane.showMessageDialog(vista, "Seleccione un incidente primero");
                 }
 
+            }
+
+        });
+
+        this.vista.getmCerrarSesion().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cerrarSesion();
             }
 
         });
@@ -398,7 +407,7 @@ public class ControladorTecnico {
             fechaCierre = null;
         }
 
-        Incidente actualizado = new Incidente(id, estadoIncidente, prioridadIncidente, fechaCierre,nuevoAsignado);
+        Incidente actualizado = new Incidente(id, estadoIncidente, prioridadIncidente, fechaCierre, nuevoAsignado);
 
         if (incidenteConexion.actualizarEstadoYPrioridad(actualizado)) {
             JOptionPane.showMessageDialog(vista, "Incidente actualizado correctamente");
@@ -425,7 +434,7 @@ public class ControladorTecnico {
         vista.setIdIncidenteSeleccionado(idIncidenteSeleccionado);
 
         vista.getLblTituloIncidenteVariable().setText(encontrado.getTitulo());
-        vista.getLblDescripcionIncidenteVariable().setText(encontrado.getDescripcion());
+        vista.getTxtDescripcionIncidente().setText(encontrado.getDescripcion());
         vista.getCbEstadoIncidenteTecnico().setSelectedItem(encontrado.getEstadoIncidente().toString());
         vista.getCbPrioridadIncidenteTecnico().setSelectedItem(encontrado.getPrioridad().toString());
         vista.getLblReportadoPorVariable().setText(encontrado.getReportadoPor().getUsuario());
@@ -488,6 +497,14 @@ public class ControladorTecnico {
             JOptionPane.showMessageDialog(null,
                     "Error cargando usuarios: " + ex.getMessage());
         }
+    }
+
+    private void cerrarSesion() {
+        this.vista.dispose();
+
+        FormPrincipal login = new FormPrincipal();
+        InicioSesion controlador = new InicioSesion();
+        login.setVisible(true);
     }
 
 }

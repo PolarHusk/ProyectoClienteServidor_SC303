@@ -2,6 +2,7 @@ package Controlador;
 
 import Datos.*;
 import Modelo.*;
+import Principal.FormPrincipal;
 import Vista.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.*;
@@ -251,6 +252,14 @@ public class ControladorAdmin {
             }
         });
 
+        this.vista.getmCerrarSesion().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cerrarSesion();
+            }
+            
+        });
+        
     }
 
     private void agregarUsuario() {
@@ -896,5 +905,13 @@ public class ControladorAdmin {
             JOptionPane.showMessageDialog(null,
                     "Error cargando usuarios: " + ex.getMessage());
         }
+    }
+    
+    private void cerrarSesion(){
+        this.vista.dispose();
+        
+        FormPrincipal login = new FormPrincipal();
+        InicioSesion controlador = new InicioSesion();
+        login.setVisible(true);
     }
 }
