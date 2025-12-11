@@ -32,7 +32,7 @@ public class UsuarioDatos {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("usuario: " + u.getUsuario() + " ya existe en la base de datos");
         }
 
         return false;

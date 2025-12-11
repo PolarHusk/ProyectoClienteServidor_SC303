@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import Datos.*;
@@ -205,6 +204,17 @@ public class ControladorAdmin {
             }
 
         });
+        
+        this.vista.getBtnBuscarIncidente().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscarIncidente();
+                mostrarDatosIncidentes();
+            }
+        
+        
+        });
+        
 
         this.vista.getBtnReporteIncidentes().addActionListener(new ActionListener() {
             @Override
@@ -224,9 +234,14 @@ public class ControladorAdmin {
                 vista.getCbEstadoIncidente().setSelectedItem(vista.getTblIncidentes().getValueAt(rec, 3).toString());
                 vista.getCbPrioridadIncidente().setSelectedItem(vista.getTblIncidentes().getValueAt(rec, 4).toString());
                 vista.getTxtReportadoPor().setText(vista.getTblIncidentes().getValueAt(rec, 5).toString());
-                vista.getTxtAsignadoA1().setText(vista.getTblIncidentes().getValueAt(rec, 6).toString());
                 vista.getTxtActivoAfectado().setText(vista.getTblIncidentes().getValueAt(rec, 7).toString());
                 vista.getLblFechaAperturaVariable().setText(vista.getTblIncidentes().getValueAt(rec, 8).toString());
+
+                if (vista.getTblIncidentes().getValueAt(rec, 6) == null) {
+                    vista.getTxtAsignadoA1().setText("Sin tecnico asignado");
+                } else {
+                    vista.getTxtAsignadoA1().setText(vista.getTblIncidentes().getValueAt(rec, 6).toString());
+                }
 
                 if (vista.getTblIncidentes().getValueAt(rec, 9) == null) {
                     vista.getLblFechaCierreVariable().setText("Incidente Abierto");
@@ -244,7 +259,14 @@ public class ControladorAdmin {
         String apellido1 = vista.getApellido1();
         String apellido2 = vista.getApellido2();
         String usuario = vista.getUsuario();
+
         String contrasena = vista.getPass();
+
+        if (usuario.isEmpty() || contrasena.isEmpty()) {
+            JOptionPane.showMessageDialog(vista, "Ingrese el usuario y contrasena");
+            return;
+        }
+
         String correo = vista.getCorreo();
         String departamento = vista.getDepartamento();
         Rol rol = vista.getRol();
@@ -268,7 +290,7 @@ public class ControladorAdmin {
         if (usuarioConexion.insertar(nuevo)) {
             JOptionPane.showMessageDialog(vista, "Usuario Creado Correctamente");
         } else {
-            JOptionPane.showMessageDialog(vista, "Usuario invalido");
+            JOptionPane.showMessageDialog(vista, "El usuario ya existe en la base de datos");
         }
 
     }
@@ -315,7 +337,7 @@ public class ControladorAdmin {
         if (actualizacion) {
             JOptionPane.showMessageDialog(vista, "Usuario Actualizado Correctamente");
         } else {
-            JOptionPane.showMessageDialog(vista, "Error al actualizar el usuario");
+            JOptionPane.showMessageDialog(vista, "El usuario no existe en la base de datos");
         }
     }
 
@@ -324,14 +346,15 @@ public class ControladorAdmin {
         int idEliminarUsuario = vista.getIdUsuarioSeleccionado();
 
         if (idEliminarUsuario <= 0) {
-            JOptionPane.showMessageDialog(vista, "Debe Seleccionar un usuario de la tabla para eliminar");
+            JOptionPane.showMessageDialog(vista, "Debe seleccionar o buscar un usuario para eliminar");
             return;
         }
 
         if (usuarioConexion.eliminar(idEliminarUsuario)) {
             JOptionPane.showMessageDialog(vista, "Usuario eliminado correctamente");
         } else {
-            JOptionPane.showMessageDialog(vista, "Error eliminando usuario");
+            JOptionPane.showMessageDialog(vista, "El usuario no existe en la base de datos o tiene incidentes asignados aun.\n Reasigne los incidentes antes"
+                    + " para eliminar este usuario", "Error al eliminar el usuario", JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -405,7 +428,13 @@ public class ControladorAdmin {
     private void agregarActivo() {
 
         String hostname = vista.getNombreActivo();
+
         String direccionIP = vista.getIPActivo();
+
+        if (hostname.isEmpty() || direccionIP.isEmpty()) {
+            JOptionPane.showMessageDialog(vista, "Ingrese el nombre del activo y la direccion IP", "Error al agregar un nuevo activo", JOptionPane.ERROR_MESSAGE);
+        }
+
         String sistemaOperativo = vista.getOSActivo();
         String ubicacionActivo = vista.getUbicacionActivo();
         String departamentoActivo = vista.getDepartamentoActivo();
@@ -417,7 +446,7 @@ public class ControladorAdmin {
         if (activoConexion.insertar(nuevo)) {
             JOptionPane.showMessageDialog(vista, "Activo creado correctamente");
         } else {
-            JOptionPane.showMessageDialog(vista, "Activo Invalido");
+            JOptionPane.showMessageDialog(vista, "Activo ya existe en la base de datos");
         }
 
     }
@@ -641,8 +670,7 @@ public class ControladorAdmin {
         }
 
         if (asignadoA == null) {
-            JOptionPane.showMessageDialog(vista, "El tecnico asignado no existe en la base de datos");
-            return;
+            JOptionPane.showMessageDialog(vista, "El tecnico no esta asignado aun", "Incidente sin tecnico asignado", JOptionPane.WARNING_MESSAGE);
         }
 
         Activo activo = activoConexion.buscarPorNombre(vista.getTxtActivoAfectado().getText().trim());
@@ -697,13 +725,12 @@ public class ControladorAdmin {
         String activoSeleccionado = this.vista.getTxtActivoAfectado().getText().trim();
 
         if (nuevoReportado == null) {
-            JOptionPane.showMessageDialog(vista, "El usuario que ha reportado el incidente no fue encontrado en la base de datos");
+            JOptionPane.showMessageDialog(vista, "Ingrese el usuario que ha reportado el incidente", "Error al actualizar incidente", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         if (nuevoAsignado == null) {
-            JOptionPane.showMessageDialog(vista, "El tecnico asignado no existe en la base de datos");
-            return;
+            JOptionPane.showMessageDialog(vista, "El tecnico no esta asignado aun", "Incidente sin tecnico asignado", JOptionPane.WARNING_MESSAGE);
         }
 
         Activo nuevoActivo = activoConexion.buscarPorNombre(activoSeleccionado);
@@ -723,11 +750,55 @@ public class ControladorAdmin {
                 nuevoActivo, fechaCreacion, fechaCierre);
 
         if (incidenteConexion.actualizar(actualizado)) {
-            JOptionPane.showMessageDialog(vista, "Incidente actualizado correctamente");
+            JOptionPane.showMessageDialog(vista, "Incidente actualizado correctamente", "Actualizacion exitosa", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(vista, "Incidente no encontrado en la base de datos");
         }
 
+    }
+    
+    private void buscarIncidente(){
+        
+
+        this.vista.getTblIncidentes().clearSelection();
+        
+        int idIncidenteSeleccionado = Integer.parseInt(this.vista.getTxtBusquedaIncidente().getText());
+        
+        Incidente encontrado = incidenteConexion.buscarPorId(idIncidenteSeleccionado);
+        
+        if (encontrado == null) {
+            JOptionPane.showMessageDialog(vista, "Incidente no encontrado en la base de datos");
+            return;
+        } else {
+            JOptionPane.showMessageDialog(vista, "Incidente encontrado");
+        }
+        
+        vista.setIdIncidenteSeleccionado(idIncidenteSeleccionado);
+        vista.getTxtTituloIncidente().setText(encontrado.getTitulo());
+        vista.getTxtDescripcionIncidente().setText(encontrado.getDescripcion());
+        vista.getLblFechaAperturaVariable().setText(encontrado.getFechaCreacion());
+        
+        if (encontrado.getFechaCierre() == null) {
+            vista.getLblFechaCierreVariable().setText("Incidente Abierto");
+        } else {
+            vista.getLblFechaCierreVariable().setText(encontrado.getFechaCierre());
+        }
+        
+        vista.getTxtReportadoPor().setText(encontrado.getReportadoPor().getUsuario());
+        
+        if (encontrado.getAsignadoA() == null) {
+            vista.getTxtAsignadoA1().setText("Sin tecnico asignado");
+        } else {
+            vista.getTxtAsignadoA1().setText(encontrado.getAsignadoA().getUsuario());
+        }
+        
+        vista.getCbEstadoIncidente().setSelectedItem(encontrado.getEstadoIncidente().toString());
+        vista.getCbPrioridadIncidente().setSelectedItem(encontrado.getPrioridad().toString());
+        vista.getTxtActivoAfectado().setText(encontrado.getActivo().getNombreHost());
+        
+        
+        
+        
     }
 
     private void eliminarIncidente() {
