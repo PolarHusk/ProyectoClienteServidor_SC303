@@ -19,7 +19,7 @@ public class Conexion
 {
         String url = "jdbc:mysql://localhost:3306/proyectoclienteprogra";
         String user="root";
-        String password="";
+        String password="cisco123!";
        
     public Conexion() {}
        
