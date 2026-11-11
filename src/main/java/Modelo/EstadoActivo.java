@@ -6,7 +6,6 @@ package Modelo;
 
 /**
  *
- * @author Dylan
  */
 public enum EstadoActivo {
     OPERATIVO,CUARENTENA,MANTENIMIENTO,APAGADO

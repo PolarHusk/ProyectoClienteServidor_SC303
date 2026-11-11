@@ -16,7 +16,6 @@ import java.net.SocketException;
 
 /**
  *
- * @author Dylan
  */
 public class ControladorChat {
 

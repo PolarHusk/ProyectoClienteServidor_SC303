@@ -6,7 +6,6 @@ package Modelo;
 
 /**
  *
- * @author dylan
  */
 public abstract class Usuario {
 

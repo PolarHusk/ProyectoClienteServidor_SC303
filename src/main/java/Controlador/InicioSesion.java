@@ -9,7 +9,6 @@ import Modelo.Usuario;
 
 /**
  *
- * @author Dylan
  */
 public class InicioSesion {
 

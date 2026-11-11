@@ -23,7 +23,6 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author Dylan
  */
 public class ControladorAdmin {
 

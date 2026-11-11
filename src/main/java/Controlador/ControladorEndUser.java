@@ -30,7 +30,6 @@ import Vista.VistaChat;
 
 /**
  *
- * @author Dylan
  */
 public class ControladorEndUser {
 

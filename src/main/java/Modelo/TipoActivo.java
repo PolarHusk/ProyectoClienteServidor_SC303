@@ -6,7 +6,6 @@ package Modelo;
 
 /**
  *
- * @author Dylan
  */
 public enum TipoActivo {
     HARDWARE,SOFTWARE,LICENCIA,RED,PERIFERICO,OTRO

@@ -16,7 +16,7 @@ CREATE TABLE usuario (
 INSERT INTO usuario 
 (nombre, apellido1, apellido2, correo, rol, usuario, password)
 VALUES 
-('Dylan', 'Calderon', 'Navarro', 'dylan@gmail.com', 'ADMIN', 'admin', 'cisco123');
+('Admin', 'Sistema', 'Principal', 'admin@ejemplo.com', 'ADMIN', 'admin', 'cisco123');
 
 CREATE TABLE activos (
     idActivo INT AUTO_INCREMENT PRIMARY KEY,

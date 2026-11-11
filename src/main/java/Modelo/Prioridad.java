@@ -6,7 +6,6 @@ package Modelo;
 
 /**
  *
- * @author Dylan
  */
 public enum Prioridad {
     BAJA,MEDIA,ALTA,CRITICA

@@ -6,7 +6,6 @@ package Datos;
 
 /**
  *
- * @author Dylan
  */
 import java.sql.Connection;
 import java.sql.DriverManager;

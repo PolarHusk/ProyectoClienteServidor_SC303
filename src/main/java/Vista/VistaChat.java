@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Dylan
  */
 public class VistaChat extends javax.swing.JFrame {
 

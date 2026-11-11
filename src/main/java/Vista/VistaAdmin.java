@@ -21,7 +21,6 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author dylan
  */
 public class VistaAdmin extends javax.swing.JFrame {
 

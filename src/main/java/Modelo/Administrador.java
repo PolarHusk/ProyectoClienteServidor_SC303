@@ -6,7 +6,6 @@ package Modelo;
 
 /**
  *
- * @author dylan
  */
 public class Administrador extends Usuario {
 

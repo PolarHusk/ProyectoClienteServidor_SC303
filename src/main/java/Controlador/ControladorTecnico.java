@@ -34,7 +34,6 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Dylan
  */
 public class ControladorTecnico {
 

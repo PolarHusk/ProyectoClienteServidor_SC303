@@ -18,7 +18,6 @@ import java.util.Map;
 
 /**
  *
- * @author Dylan
  */
 public class ServidorChat {
 

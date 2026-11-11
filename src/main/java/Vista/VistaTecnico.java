@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author dylan
  */
 public class VistaTecnico extends javax.swing.JFrame {
 

@@ -6,7 +6,6 @@ package Modelo;
 
 /**
  *
- * @author dylan
  */
 public enum Estado {
     ABIERTO, EN_PROCESO,RESUELTO,CANCELADO

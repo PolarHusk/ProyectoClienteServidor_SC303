@@ -10,7 +10,6 @@ import Modelo.*;
 
 /**
  *
- * @author Dylan
  */
 public class ActivoDatos {
 
